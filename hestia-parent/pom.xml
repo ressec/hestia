@@ -11,6 +11,8 @@
 
 	<modules>
 		<module>../hestia-base</module>
+		<module>../hestia-server</module>
+		<module>../hestia-utility</module>
 	</modules>
 
 	<licenses>

@@ -6,7 +6,7 @@
   	<groupId>com.heliosphere.hestia</groupId>
   	<artifactId>hestia-parent</artifactId>
   	<version>0.0.1-SNAPSHOT</version>
-  	<relativePath>../../../../../../../git/github/hestia/hestia-parent</relativePath>
+  	<relativePath>../hestia-parent</relativePath>
   </parent>
   <dependencies>
   	<dependency>
