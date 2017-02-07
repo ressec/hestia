@@ -13,6 +13,7 @@
 		<module>../hestia-base</module>
 		<module>../hestia-server</module>
 		<module>../hestia-utility</module>
+		<module>../hestia-sandbox</module>
 	</modules>
 
 	<licenses>
