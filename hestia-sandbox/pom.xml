@@ -26,5 +26,5 @@
   		<artifactId>cloning</artifactId>
   	</dependency>
   </dependencies>
-  <description>Sanbox project for Heliosphere's Hestia project containing experimentations on several technologies. The artifact resulting from this module is not intended to be distributed outside of Heliosphere's.</description>
+  <description>Sanbox project for Heliosphere's Hestia domain contais experimentations on several technologies. The artifact resulting from this module is not intended to be distributed outside of Heliosphere's.</description>
 </project>
