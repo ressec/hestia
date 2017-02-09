@@ -5,16 +5,15 @@ language: java
 script: mvn clean package -f hestia-parent/pom.xml
 
 jdk: oraclejdk7
-
 after_success:
-  - echo "<settings><servers><server><id>nexus-snapshots</id><username>\${env.CI_DEPLOY_USERNAME}</username><password>\${env.CI_DEPLOY_PASSWORD}</password></server></servers></settings>"
+- echo "<settings><servers><server><id>nexus-snapshots</id><username>\${env.CI_DEPLOY_USERNAME}</username><password>\${env.CI_DEPLOY_PASSWORD}</password></server></servers></settings>"
   > ~/settings.xml
-  - if [ -z ${TRAVIS_TAG} ]; then mvn deploy -f hestia-parent/pom.xml -DskipTests --settings
+- if [ -z ${TRAVIS_TAG} ]; then mvn deploy -f hestia-parent/pom.xml -DskipTests --settings
   ~/settings.xml; fi
 
 before_deploy:
-  - mvn package
-  - zip -r ${TRAVIS_TAG}.zip target/*.jar
+- mvn package
+- zip -r ${TRAVIS_TAG}.zip target/*.jar
 
 deploy:
   provider: releases
