@@ -13,6 +13,7 @@
 		<module>../hestia-base</module>
 		<module>../hestia-server</module>
 		<module>../hestia-utility</module>
+		<module>../hestia-sandbox</module>
 	</modules>
 
 	<licenses>
@@ -70,73 +71,33 @@
 
 
 
-			<dependency>
-				<groupId>joda-time</groupId>
-				<artifactId>joda-time</artifactId>
-				<version>1.6</version>
-				<type>jar</type>
-				<scope>compile</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>commons-configuration</groupId>
-				<artifactId>commons-configuration</artifactId>
-				<version>1.9</version>
-			</dependency>
 
 
-			<dependency>
-				<groupId>com.h2database</groupId>
-				<artifactId>h2</artifactId>
-				<version>1.3.160</version>
-			</dependency>
 
-			<dependency>
-				<groupId>com.carrotsearch</groupId>
-				<artifactId>junit-benchmarks</artifactId>
-				<version>0.6.0</version>
-			</dependency>
+
+
+
+
+
+
+
+
+
 
 
 
 			<dependency>
-				<groupId>commons-collections</groupId>
-				<artifactId>commons-collections</artifactId>
-				<version>3.2.1</version>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
 			</dependency>
-
-
 			<dependency>
-				<groupId>org.easyrules</groupId>
-				<artifactId>easyrules-core</artifactId>
-				<version>2.2.0</version>
+				<groupId>com.typesafe.akka</groupId>
+				<artifactId>akka-actor_2.12</artifactId>
 			</dependency>
-
 			<dependency>
-				<groupId>commons-validator</groupId>
-				<artifactId>commons-validator</artifactId>
-				<version>1.4.0</version>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
 			</dependency>
-
-			<dependency>
-				<groupId>com.darwinsys</groupId>
-				<artifactId>hirondelle-date4j</artifactId>
-				<version>1.5.1</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.github.javafaker</groupId>
-				<artifactId>javafaker</artifactId>
-				<version>0.10</version>
-			</dependency>
-
-
-			<dependency>
-				<groupId>com.thoughtworks.xstream</groupId>
-				<artifactId>xstream</artifactId>
-				<version>1.4.9</version>
-			</dependency>
-
 	</dependencies>
 
 	<build>
@@ -151,8 +112,8 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.1</version>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>1.8</source>
+						<target>1.8</target>
 						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
@@ -352,7 +313,7 @@
 			<dependency>
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
-				<version>1.2.15</version>
+				<version>1.2.14</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-lang</groupId>
@@ -376,9 +337,20 @@
 			</dependency>
 			<dependency>
 				<groupId>com.typesafe.akka</groupId>
-				<artifactId>akka-actor</artifactId>
+				<artifactId>akka-actor_2.12</artifactId>
 				<version>2.4.16</version>
+			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.9</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.javafaker</groupId>
+				<artifactId>javafaker</artifactId>
+				<version>0.12</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<description>Parent project for Heliosphere's Hestia domain contains elements being common for all Hestia modules.</description>
 </project>
