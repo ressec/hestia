@@ -17,7 +17,13 @@ import akka.actor.Inbox;
 import akka.actor.Props;
 
 /**
- * Provides a tutorial based on how to send messages to an {@code Akka} actor.
+ * {@code Akka} tutorial showing how to send messages asynchronously between two actors.
+ * <p>
+ * This tutorial creates an actor system and 2 different actors. One is considered as the client {@link Consumer} which send asynchronous request
+ * messages {@link RequestMessage} to a producer actor {@link Worker} which computes the requests sent by the client and provide the response to the
+ * client through response messages {@link ResponseMessage}.
+ * <p>
+ * When the client has processed a pre-defined number of requests, it then shutdown the system.
  * <hr>
  * @author <a href="mailto:christophe.resse@gmail.com">Resse Christophe - Heliosphere</a>
  * @version 1.0.0

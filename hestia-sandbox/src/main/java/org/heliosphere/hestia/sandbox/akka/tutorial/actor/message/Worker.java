@@ -15,6 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.heliosphere.demeter.base.element.Element;
+import com.heliosphere.demeter.base.element.IElement;
+
 import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
@@ -45,6 +48,8 @@ public final class Worker extends UntypedActor
 	@Override
 	public final void onReceive(Object message)
 	{
+		IElement<String> element = null;
+
 		count += 1;
 
 		Date date = Calendar.getInstance().getTime();
@@ -53,33 +58,39 @@ public final class Worker extends UntypedActor
 		if (message instanceof RequestMessage)
 		{
 			//LOG.info(String.format("Received message of type: %1$s", ((RequestMessage) message).name()));
+			RequestMessage request = (RequestMessage) message;
 
 			switch ((RequestMessage) message)
 			{
 				case ASK_NAME:
-					getSender().tell(new ResponseMessage((RequestMessage) message, name), getSelf());
+					element = new Element<>("My name is: ", name);
+					getSender().tell(new ResponseMessage(request, element), getSelf());
 					break;
 
 				case ASK_COMPUTATION:
-					getSender().tell(new ResponseMessage((RequestMessage) message, "4 + 1 - 3 = 2"), getSelf());
+					element = new Element<>("Result of (4 + 1 - 3) is: ", "2");
+					getSender().tell(new ResponseMessage(request, element), getSelf());
 					break;
 
 				case ASK_DATE:
 					sdf = new SimpleDateFormat("dd.MM.yyyy");
-					getSender().tell(new ResponseMessage((RequestMessage) message, "Date is: " + sdf.format(date)), getSelf());
+					element = new Element<>("Current date is: ", sdf.format(date));
+					getSender().tell(new ResponseMessage(request, element), getSelf());
 					break;
 
 				case ASK_TIME:
 					sdf = new SimpleDateFormat("hh:mm:ss");
-					getSender().tell(new ResponseMessage((RequestMessage) message, "Time is: " + sdf.format(date)), getSelf());
+					element = new Element<>("Current time is: ", sdf.format(date));
+					getSender().tell(new ResponseMessage(request, element), getSelf());
 					break;
 
 				case ASK_MESSAGE_COUNT:
-					getSender().tell(new ResponseMessage((RequestMessage) message, "# Count: " + count), getSelf());
+					element = new Element<>("Requests being processed at this time is: ", String.valueOf(count));
+					getSender().tell(new ResponseMessage(request, element), getSelf());
 					break;
 
 				default:
-					LOG.debug(String.format("Not processing message of type: %1$s", ((RequestMessage) message).name()));
+					LOG.debug(String.format("Not processing message of type: %1$s", request.name()));
 					break;
 			}
 		}
