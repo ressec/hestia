@@ -14,6 +14,9 @@ package org.heliosphere.hestia.sandbox.akka.tutorial.hello;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
+
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Inbox;
@@ -45,6 +48,12 @@ public final class HelloWorld
 		{
 			// Create the 'helloakka' actor system
 			final ActorSystem system = ActorSystem.create("helloakka");
+
+			// Prints the settings.
+			//System.out.println(system.settings());
+
+			Config conf = ConfigFactory.load("application.conf");
+			System.out.println("akka.actor.debug.lifecycle: " + conf.getString("akka.actor.debug.lifecycle")); //should be 'on'
 
 			// Create the 'greeter' actor
 			final ActorRef greeter = system.actorOf(Props.create(Greeter.class), "greeter");

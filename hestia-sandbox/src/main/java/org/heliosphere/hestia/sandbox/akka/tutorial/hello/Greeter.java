@@ -12,11 +12,20 @@
 package org.heliosphere.hestia.sandbox.akka.tutorial.hello;
 
 import akka.actor.UntypedActor;
+import akka.event.Logging;
+import akka.event.LoggingAdapter;
 
 public class Greeter extends UntypedActor
 {
+	private final LoggingAdapter LOG = Logging.getLogger(getContext().system(), this);
+
+	/**
+	 * 
+	 */
+	@SuppressWarnings("nls")
 	String greeting = "";
 
+	@SuppressWarnings("nls")
 	@Override
 	public void onReceive(Object message)
 	{
@@ -25,14 +34,17 @@ public class Greeter extends UntypedActor
 			greeting = "hello, " + ((WhoToGreet) message).who;
 		}
 		else
+		{
 			if (message instanceof Greet)
 			{
-				// Send the current greeting back to the sender
+				// Send the current greeting back to the sender.
+				LOG.info("Received String message: {}", message);
 				getSender().tell(new Greeting(greeting), getSelf());
 			}
 			else
 			{
 				unhandled(message);
 			}
+		}
 	}
 }
