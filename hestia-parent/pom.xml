@@ -68,36 +68,22 @@
 	</properties>
 
 	<dependencies>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>com.typesafe.akka</groupId>
-				<artifactId>akka-actor_2.12</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>com.google.guava</groupId>
-				<artifactId>guava</artifactId>
-			</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.typesafe.akka</groupId>
+			<artifactId>akka-actor_2.12</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.heliosphere.demeter</groupId>
+			<artifactId>demeter-base</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -349,6 +335,11 @@
 				<groupId>com.github.javafaker</groupId>
 				<artifactId>javafaker</artifactId>
 				<version>0.12</version>
+			</dependency>
+			<dependency>
+				<groupId>com.heliosphere.demeter</groupId>
+				<artifactId>demeter-base</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

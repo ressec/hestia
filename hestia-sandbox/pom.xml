@@ -25,6 +25,10 @@
   		<groupId>uk.com.robust-it</groupId>
   		<artifactId>cloning</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>com.heliosphere.demeter</groupId>
+  		<artifactId>demeter-base</artifactId>
+  	</dependency>
   </dependencies>
   <description>Sanbox project for Heliosphere's Hestia domain contais experimentations on several technologies. The artifact resulting from this module is not intended to be distributed outside of Heliosphere's.</description>
 </project>

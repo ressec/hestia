@@ -32,6 +32,12 @@ public final class Consumer extends UntypedActor
 	private final LoggingAdapter LOGGER = Logging.getLogger(getContext().system(), this);
 
 	/**
+	 * Limit of message requests to be processed.<br>
+	 * After this limit has been reached, we stop the communication.
+	 */
+	private final long COUNT_LIMIT = 100000;
+
+	/**
 	 * Reference to the worker actor.
 	 */
 	@SuppressWarnings("nls")
@@ -42,6 +48,7 @@ public final class Consumer extends UntypedActor
 	 */
 	public Consumer()
 	{
+		// At construction time, request from the 'worker' its name so that we can start the communication.
 		worker.tell(RequestMessage.ASK_NAME, getSelf());
 	}
 
@@ -53,8 +60,21 @@ public final class Consumer extends UntypedActor
 		{
 			if (((ResponseMessage) message).getRequest() == RequestMessage.ASK_MESSAGE_COUNT)
 			{
-				//LOG.info(String.format("Received response from request of type: %1$s ; anwser is: %2$s", ((ResponseMessage) message).getRequest().name(), ((ResponseMessage) message).getResponse()));
-				log.info(String.format("Received response from request of type: %1$s ; anwser is: %2$s", ((ResponseMessage) message).getRequest().name(), ((ResponseMessage) message).getResponse()));
+				ResponseMessage response = (ResponseMessage) message;
+
+				//LOG.info(String.format("Received response from request of type: %1$s ; answer is: %2$s", ((ResponseMessage) message).getRequest().name(), ((ResponseMessage) message).getResponse()));
+				log.info(String.format("Received response from request of type: %1$s ; answer is: %2$s", response.getRequest().name(), response.getResponse().getName() + ": " + response.getResponse().getValue()));
+
+				if (Long.valueOf(response.getResponse().getValue()).longValue() >= COUNT_LIMIT)
+				{
+					// Shutdown this actor.
+					//context().stop(getSelf());
+
+					// Shutdown the sender actor.
+					//context().stop(getSender());
+
+					context().system().terminate();
+				}
 			}
 
 			// Randomly send a new request to the worker actor.

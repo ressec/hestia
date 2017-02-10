@@ -13,6 +13,8 @@ package org.heliosphere.hestia.sandbox.akka.tutorial.actor.message;
 
 import java.io.Serializable;
 
+import com.heliosphere.demeter.base.element.IElement;
+
 import lombok.Getter;
 
 /**
@@ -32,13 +34,13 @@ public class ResponseMessage implements Serializable
 	 * Original request type.
 	 */
 	@Getter
-	public final RequestMessage request;
+	private final RequestMessage request;
 
 	/**
 	 * Response message.
 	 */
 	@Getter
-	public final String response;
+	private final IElement<String> response;
 
 	/**
 	 * Creates a new response message.
@@ -46,7 +48,7 @@ public class ResponseMessage implements Serializable
 	 * @param request Original request.
 	 * @param response Response.
 	 */
-	public ResponseMessage(RequestMessage request, String response)
+	public ResponseMessage(RequestMessage request, IElement<String> response)
 	{
 		this.request = request;
 		this.response = response;
