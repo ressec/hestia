@@ -9,7 +9,7 @@
  * License can be consulted at http://www.apache.org/licenses/LICENSE-2.0
  * ---------------------------------------------------------------------------
  */
-package org.heliosphere.hestia.sandbox.akka.tutorial.actor.config;
+package org.heliosphere.hestia.sandbox.config.tutorial;
 
 import java.util.Map;
 
@@ -25,7 +25,7 @@ import com.typesafe.config.ConfigValue;
  * <p>
  * It dumps 3 subsets of this configuration:
  * <ul>
- * <li>the whole config. including the {@code akka} properties.</li>
+ * <li>the whole config. including the {@code Akka} properties.</li>
  * <li>the {@code heliosphere} config. only.</li>
  * <li>the {@code heliosphere} config. for the server located in {@code Paris}.</li>
  * </ul>
